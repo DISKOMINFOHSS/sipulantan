@@ -12,6 +12,7 @@
 
   @yield('content')
 
+  @include('templates.landing.footer')
   @include('includes.scripts')  
 </body>
 </html>

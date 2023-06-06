@@ -1,7 +1,7 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<div class="px-4 my-8">
+<div class="px-4 my-5">
   <div class="flex justify-between items-end">
     <div>
       <nav class="flex mb-1" aria-label="Breadcrumb">
@@ -43,18 +43,13 @@
         <tr class="bg-white border-b">
           <th scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap">
             <div class="flex items-center">
-              @isset($category->photo)
+              {{-- @isset($category->photo)
               <img src="{{ $category->photo }}" class="w-8 h-8 rounded-lg mr-2" alt="">
-              @endisset
-              @empty($category->photo)
-              <div class="flex items-center justify-center bg-gray-100 rounded-lg w-8 h-8 mr-2">
-                <i data-feather="tag" class="text-gray-700 w-4 h-4 ml-1"></i>
-              </div>
-              @endempty
+              @endisset --}}
               {{ $category->name }}
             </div>
           </th>
-          <td class="px-6 py-4">0</td>
+          <td class="px-6 py-4">{{ count($category->products) }}</td>
           <td class="px-6 py-4">
             <div class="flex space-x-2.5">
               <button data-modal-target="category-modal" data-modal-toggle="category-modal" type="button"

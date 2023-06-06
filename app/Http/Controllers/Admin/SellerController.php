@@ -19,7 +19,7 @@ class SellerController extends Controller
     {
         return view('admin.sellers.list', [
             'districts' => District::with('villages')->where('city_code', '6306')->get(),
-            'sellers'   => Seller::with(['contacts', 'village', 'district'])->paginate(10),
+            'sellers' => Seller::with(['contacts', 'village', 'district'])->paginate(10),
         ]);
     }
 
@@ -38,8 +38,8 @@ class SellerController extends Controller
         $seller = new Seller;
         $seller->name = $validated['name'];
         $seller->address = $request->input('address');
-        $seller->village_id = $request->input('village');
-        $seller->district_id = $request->input('district');
+        $seller->village_id = $request->input('village') ? $request->input('village') : null;
+        $seller->district_id = $request->input('district') ? $request->input('district') : null;
 
         if ($request->hasFile('photo')) {
             $seller->photo = $validated['photo'];
@@ -49,7 +49,6 @@ class SellerController extends Controller
 
         $contact = new Contact;
         $contact->type = $validated['type'];
-        $contact->seller_id = $seller->id;
 
         if ($validated['type'] == 'whatsapp') {
             $contact->contact_info = "https://wa.me/62" . substr($validated['contact'], 1);
@@ -57,21 +56,33 @@ class SellerController extends Controller
             $contact->contact_info = $validated['contact'];
         }
 
-        $contact->save();
+        $seller->contacts()->save($contact);
 
         return redirect()->route('admin.sellers.index');
     }
 
     public function show(string $id)
     {
-        return response()->json(Seller::with('contacts', 'village', 'district')->find($id));
+        return view('admin.sellers.detail', [
+            'seller'    => Seller::with(['contacts', 'products'])->findOrFail($id),
+        ]);
+        // return response()->json(Seller::with('contacts', 'village', 'district')->find($id));
     }
 
     public function destroy(string $id)
     {
-        $seller = Seller::with('contacts')->find($id);
+        $seller = Seller::with(['contacts', 'products', 'products.categories'])
+                    ->findOrFail($id);
 
-        foreach($seller->contacts as $contact) Contact::destroy($contact->id);
+        foreach($seller->contacts as $contact) {
+            $contact->delete();
+        }
+
+        foreach($seller->products as $product) {
+            $product->categories()->detach();
+            $product->delete();
+        }
+
         $seller->delete();
 
         return redirect()->route('admin.sellers.index');

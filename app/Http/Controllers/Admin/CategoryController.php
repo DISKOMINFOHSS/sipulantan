@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         return view('admin.categories.list', [
-            'categories' => Category::orderBy('name')->paginate(10),
+            'categories' => Category::with('products')->orderBy('name')->paginate(10),
         ]);
     }
 
@@ -60,6 +60,11 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        return response()->json(Category::findOrFail($id));
+        $category = Category::with('products')->findOrFail($id);
+        $category->products()->detach();
+
+        $category->delete();
+
+        return redirect()->route('admin.categories.index');
     }
 }
