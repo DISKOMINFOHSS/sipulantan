@@ -74,7 +74,7 @@
   </div>
 </div>
 
-@include('admin.categories.modal_add_edit')
+@include('admin.categories.modal_create_edit')
 @include('templates.admin.modal_delete', ['title' => 'kategori', 'route' => 'categories'])
 
 @endsection

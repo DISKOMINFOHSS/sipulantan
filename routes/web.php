@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
 use App\Http\Controllers\Admin\SellerController as AdminSellerController;
 use App\Http\Controllers\Auth\LoginController;
@@ -53,9 +54,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['role:admin'])->group(function () {
         Route::prefix('admin')->group(function () {
             Route::name('admin.')->group(function () {
-                Route::get('/dashboard', function () {
-                    return view('admin.dashboard');
-                })->name('dashboard');
+                Route::get('/dashboard', DashboardController::class)->name('dashboard');
 
                 Route::resource('categories', AdminCategoryController::class)->only([
                     'index', 'store', 'update', 'destroy'
