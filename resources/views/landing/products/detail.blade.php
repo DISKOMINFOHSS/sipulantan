@@ -56,7 +56,12 @@
       </button>
       <div class="my-4 p-4 flex justify-between items-center border border-gray-200 rounded-lg">
         <div class="flex items-center">
-          <img class="rounded-lg w-12 h-12" src="https://flowbite.com/docs/images/examples/image-4@2x.jpg" alt="image description">
+          @isset($product->seller->photo)
+            <img class="rounded-lg aspect-square object-cover w-12 h-12" src="{{ $product->seller->photo }}" alt="image description">
+          @endisset
+          @empty($product->seller->photo)
+            <img class="border border-gray-200 rounded-lg aspect-square object-cover w-12 h-12 p-1.5" src="{{ asset('images/seller.png') }}" alt="image description">
+          @endempty
           <div class="ml-2">
             <h5 class="text-xl font-bold text-gray-900 line-clamp-1">{{ $product->seller->name }}</h5>
             <div class="flex items-center font-light text-sm text-gray-700">

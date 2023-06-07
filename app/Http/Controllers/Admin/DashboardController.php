@@ -16,8 +16,9 @@ class DashboardController extends Controller
     public function __invoke(Request $request): View
     {
         return view('admin.dashboard', [
-            'products' => Product::with('seller')->orderBy('created_at', 'desc')->limit(8)->get(),
-            'sellers' => Seller::with('products')->limit(5)->get(),
+            'products' => Product::with('seller')->orderBy('created_at', 'desc')->get(),
+            'sellers' => Seller::with('products')->get(),
+            'display_products' => Product::where('is_archived', false)->get(),
         ]);
     }
 }

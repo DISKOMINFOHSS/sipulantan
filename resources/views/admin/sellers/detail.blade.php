@@ -32,7 +32,12 @@
   <div class="my-5 p-4 sm:p-6 flex justify-between border border-gray-200 rounded-lg">
     <div class="flex">
       <div class="flex">
-        <div class="bg-gray-500 rounded-lg w-16 h-16"></div>
+        @isset($seller->photo)
+        <img class="rounded-lg aspect-square object-cover w-16 h-16" src="{{ $seller->photo }}" alt="image description">
+        @endisset
+        @empty($seller->photo)
+        <img class="border border-gray-200 rounded-lg aspect-square object-cover w-16 h-16 p-2" src="{{ asset('images/seller.png') }}" alt="image description">
+        @endempty
       </div>
       <div class="ml-3.5">
         <h5 class="text-xl tracking-wide font-bold text-gray-900 line-clamp-1">{{ $seller->name }}</h5>      

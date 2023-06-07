@@ -11,7 +11,7 @@
                 </h3>
             </div>
             <div class="p-6">
-                <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Connect with one of our available wallet providers or create a new one.</p>
+                <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Hubungi penjual untuk informasi lebih lanjut dengan kontak di bawah ini.</p>
                 <ul class="my-4 space-y-3">
                   @foreach($seller->contacts as $contact)
                     <li>

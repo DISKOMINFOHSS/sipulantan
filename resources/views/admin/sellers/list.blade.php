@@ -43,8 +43,12 @@
         <tr class="bg-white border-b">
           <th scope="row" class="px-6 py-4 font-normal text-gray-900 whitespace-nowrap">
             <div class="flex items-center">
-              <!-- <img class="w-10 h-10 object-contain rounded-full mr-2" src="{{ $seller->photo }}" alt="seller photo"> -->
-              <div class="bg-gray-500 rounded-lg mr-2 w-12 h-12"></div>
+              @isset($seller->photo)
+              <img class="rounded-lg aspect-square object-cover w-10 h-10 mr-2" src="{{ $seller->photo }}" alt="image description">
+              @endisset
+              @empty($seller->photo)
+              <img class="border border-gray-200 rounded-lg aspect-square object-cover w-10 h-10 mr-2 p-1.5" src="{{ asset('images/seller.png') }}" alt="image description">
+              @endempty
               <div>
                 <div class="text-base">{{ $seller->name }}</div>
                 <!-- <div class="font-light text-gray-500">{{ count($seller->products) }} Produk</div> -->

@@ -5,7 +5,12 @@
 
   <div class="my-4 p-4 sm:p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center border border-gray-200 rounded-lg">
     <div class="flex items-center">
-      <img class="rounded-lg w-14 h-14" src="https://flowbite.com/docs/images/examples/image-4@2x.jpg" alt="image description">
+      @isset($seller->photo)
+      <img class="rounded-lg aspect-square object-cover w-14 h-14" src="{{ $seller->photo }}" alt="image description">
+      @endisset
+      @empty($seller->photo)
+      <img class="border border-gray-200 rounded-lg aspect-square object-cover w-14 h-14 p-1.5" src="{{ asset('images/seller.png') }}" alt="image description">
+      @endempty
       <div class="ml-3">
         <h5 class="text-xl tracking-wide font-bold text-gray-900 line-clamp-1">{{ $seller->name }}</h5>
         <div class="flex items-center font-light text-sm text-gray-700">

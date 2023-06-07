@@ -18,11 +18,44 @@
   <div>
     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl">Dashboard</h2>
   </div>
-  <div class="my-6 grid grid-cols-4 gap-6">
-    <div class="flex justify-center items-center border border-gray-200 rounded-lg h-32 w-full">Produk</div>
-    <div class="flex justify-center items-center border border-gray-200 rounded-lg h-32 w-full">Produk</div>
-    <div class="flex justify-center items-center border border-gray-200 rounded-lg h-32 w-full">Produk</div>
-    <div class="flex justify-center items-center border border-gray-200 rounded-lg h-32 w-full">Produk</div>
+  <div class="mt-7 mb-10 grid grid-cols-4 gap-6">
+    <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
+      <div>
+        <div class="text-sm text-gray-600">Kategori Barang</div>
+        <div class="text-3xl font-medium">{{ count($categories) }}</div>
+      </div>
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+        <i data-feather="list" class="w-6 h-6 text-blue-800"></i>
+      </div>
+    </div>
+    <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
+      <div>
+        <div class="text-sm text-gray-600">Penjual</div>
+        <div class="text-3xl font-medium">{{ count($sellers) }}</div>
+      </div>
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+        <i data-feather="users" class="w-6 h-6 text-blue-800"></i>
+      </div>
+    </div>
+    <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
+      <div>
+        <div class="text-sm text-gray-600">Produk Barang</div>
+        <div class="text-3xl font-medium">{{ count($products) }}</div>
+      </div>
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+        <i data-feather="shopping-bag" class="w-6 h-6 text-blue-800"></i>
+      </div>
+    </div>
+    <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
+      <div>
+        <div class="text-sm text-gray-600">Produk Ditampilkan</div>
+        <div class="text-3xl font-medium">{{ count($display_products) }}</div>
+      </div>
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+        <i data-feather="gift" class="w-6 h-6 text-blue-800"></i>
+      </div>
+    </div>
+    
   </div>
   <div class="flex space-x-8">
     <div class="grow">
@@ -48,7 +81,7 @@
             </tr>
           </thead>
           <tbody>
-            @foreach($products as $product)
+            @foreach($products->slice(0, 8) as $product)
             <tr class="bg-white border-b">
               <th scope="row" class="px-6 py-4 font-normal text-gray-900 max-w-sm">
                 <div class="flex items-center">
@@ -97,23 +130,21 @@
         <!-- <h6 class="text-gray-600 font-light text-sm">Penjual dengan produk terbanyak</h6> -->
       </div>
       <div class="mt-5 space-y-3">
-        @foreach($sellers as $seller)
+        @foreach($sellers->slice(0,5) as $seller)
         <a href="{{ route('admin.sellers.show', ['seller' => $seller->id]) }}" class="flex items-center p-3 border border-gray-200 rounded-lg">
-          <!-- <img src="" alt="" class="w-8 h-8 rounded object-cover"> -->
-          <div class="bg-gray-300 w-8 h-8 rounded"></div>
+          <!-- <div class="bg-gray-300 w-8 h-8 rounded"></div> -->
+          @isset($seller->photo)
+            <img class="rounded-lg aspect-square object-cover w-8 h-8" src="{{ $seller->photo }}" alt="image description">
+          @endisset
+          @empty($seller->photo)
+            <img class="border border-gray-200 rounded-lg aspect-square object-cover w-8 h-8 p-1.5" src="{{ asset('images/seller.png') }}" alt="image description">
+          @endempty
           <div class="ml-2">
             <div class="text-sm line-clamp-1">{{ $seller->name }}</div>
             <div class="text-xs text-gray-600 font-light">{{ count($seller->products) }} Produk</div>
           </div>
         </a>
         @endforeach
-        <!-- <div class="flex items-center p-3 border border-gray-200 rounded-lg">
-          <div class="bg-gray-300 w-8 h-8 rounded"></div>
-          <div class="ml-2">
-            <div class="text-sm line-clamp-1">Toko ABC Baru</div>
-            <div class="text-xs text-gray-600 font-light">12 Produk</div>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
