@@ -15,7 +15,7 @@ class HomeController extends Controller
     {
         return view('landing.home', [
             'products' => Product::orderBy('created_at', 'desc')->where('is_archived', false)->limit(4)->get(),
-            'categories' => Category::with('products')->get(),
+            'categories' => Category::with('products')->limit(3)->get(),
         ]);
     }
 }
