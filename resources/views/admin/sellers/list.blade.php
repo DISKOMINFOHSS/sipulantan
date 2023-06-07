@@ -63,11 +63,11 @@
                 <i data-feather="external-link" class="w-3 h-3 mr-2"></i>
                 Detail  
               </a>
-              <button data-modal-target="seller-modal" data-modal-toggle="seller-modal" type="button" disabled
+              <!-- <button data-modal-target="seller-edit-modal" data-modal-toggle="seller-edit-modal" type="button"
               class="btn-edit flex items-center text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 rounded-lg text-sm px-5 py-2.5 text-center cursor-not-allowed">
                 <i data-feather="edit" class="w-3 h-3 mr-2"></i>
                 Edit
-              </button>
+              </button> -->
               <button data-modal-target="delete-modal" data-modal-toggle="delete-modal" data-id="{{ $seller->id }}" type="button"
               class="btn-delete flex items-center py-2.5 px-5 text-sm text-red-500 hover:text-white border border-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg focus:z-10">
                 <i data-feather="trash-2" class="w-3 h-3 mr-2"></i>
@@ -80,7 +80,7 @@
       </tbody>
     </table>
     <div class="my-4">
-      
+      {{ $sellers->links() }}
     </div>
   </div>
 
