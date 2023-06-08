@@ -6,7 +6,7 @@
   <!-- <div class="block w-full h-48 sm:h-64 md:h-96 rounded-lg bg-gray-200">
     </div> -->
   <a href="{{ route('products.index') }}">
-    <img src="{{ asset('/images/home-banner.png')}}" class="block w-full h-36 sm:h-64 md:h-96 object-cover rounded-lg" alt="...">
+    <img src="{{ asset('/images/home-banner.png')}}" class="block w-full aspect-video object-cover rounded-lg" alt="...">
   </a>
 
   <!-- <section class="bg-white">

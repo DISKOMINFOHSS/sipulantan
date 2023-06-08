@@ -27,7 +27,6 @@
             @endforeach
           </ul>
       </div>
-
     </div>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 my-8">
@@ -36,6 +35,9 @@
       @include('templates.landing.card_product', ['product' => $p])
     @endforeach
     
+  </div>
+  <div class="my-4">
+    {{ $products->links() }}
   </div>
 
 </div>

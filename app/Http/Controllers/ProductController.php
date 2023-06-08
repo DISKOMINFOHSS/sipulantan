@@ -14,7 +14,8 @@ class ProductController extends Controller
     {
         return view('landing.products.list', [
             'title'     => 'Semua Produk',
-            'products'   => Product::with('seller')->where('is_archived', false)->paginate(16),
+            'products'   => Product::with('seller')->where('is_archived', false)
+                                ->orderBy('created_at', 'desc')->paginate(16),
         ]);
     }
 
@@ -26,21 +27,22 @@ class ProductController extends Controller
                 ->join('sellers', 'products.seller_id', '=', 'sellers.id')
                 ->where('is_archived', false)
                 ->where('products.name', 'like', '%'.$keyword.'%')
-                ->orWhere('sellers.name', 'like', '%'.$keyword.'%');
+                ->orWhere('sellers.name', 'like', '%'.$keyword.'%')
+                ->orderBy('created_at', 'desc');
 
-        // return response()->json($q->select('products.*')->get());
 
         return view('landing.products.list', [
             'query'     => $keyword,
             'title'     => 'Hasil Pencarian',
-            'products'  => $q->select('products.*')->get(),
+            'products'  => $q->select('products.*')->paginate(16),
         ]);
     }
 
     public function show(string $id): View
     {
         return view('landing.products.detail', [
-            'product' => Product::with(['seller', 'categories'])->find($id),
+            'product' => Product::with(['seller', 'categories'])
+                            ->orderBy('created_at', 'desc')->find($id),
         ]);
     }
 }
