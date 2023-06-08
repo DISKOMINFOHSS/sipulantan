@@ -1,4 +1,4 @@
-<aside class="min-h-screen w-64 bg-gray-50 px-4">
+<aside id="drawer-sidebar" class="fixed top-0 left-0 z-40 transition-transform -translate-x-full lg:translate-x-0 lg:relative min-h-screen min-w-fit w-64 bg-gray-50 px-4">
   <a href="{{ route('landing') }}" class="flex items-center my-4 py-4 px-2">
     <i class="mr-2" data-feather="octagon"></i>
     <span class="self-center text-2xl font-semibold whitespace-nowrap">LOGO</span>
