@@ -10,7 +10,7 @@
 <body class="flex max-w-screen-xl">
   @include('templates.admin.sidebar')
 
-  <div class="w-full mx-4">
+  <div class="w-full mx-auto lg:mx-4">
     @include('templates.admin.navbar')
 
     @yield('content')

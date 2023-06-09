@@ -6,7 +6,7 @@
           <i class="w-5 h-5 mr-2" data-feather="menu"></i>
       </button>
       <div class="flex items-center">
-        <button type="button" class="flex mr-3 text-sm rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+        <button type="button" class="flex text-sm rounded-full mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
           <span class="sr-only">Open user menu</span>
           <div class="rounded-full w-10 h-10 bg-gray-100 flex items-center justify-center">
             <i data-feather="user" class="w-4 h-4 text-gray-600"></i>

@@ -3,7 +3,7 @@
 @section('content')
 <div class="px-4 my-5">
   <div class="flex justify-between items-end">
-    <div>
+    <div class="ml-1 sm:ml-0">
       <nav class="flex mb-1" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2">
           <li class="inline-flex items-center">
@@ -19,17 +19,17 @@
           </li>
         </ol>
       </nav>
-      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl">Daftar Produk Barang</h2>
+      <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl">Daftar Produk<span class="hidden sm:inline"> Barang</span></h2>
     </div>
     <div>
       <a href="{{ route('admin.products.create') }}"
       class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-        Tambah Produk
+        Tambah<span class="hidden sm:inline"> Produk</span>
       </a>
     </div>
   </div>
 
-  <div class="my-10 overflow-x-auto sm:rounded-lg">
+  <div class="my-7 sm:my-10 overflow-x-auto sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>

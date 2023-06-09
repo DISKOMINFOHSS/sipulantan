@@ -30,12 +30,12 @@
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
     @foreach($categories->slice(0, 3) as $category)
-    <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="flex flex-col justify-center items-center h-40 w-full bg-blue-50 rounded-lg hover:bg-blue-200">
+    <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="flex flex-col justify-center items-center p-4 md:h-40 w-full bg-blue-50 rounded-lg hover:bg-blue-200">
       <div class="bg-blue-600 rounded-full p-3 mb-2">
         <i data-feather="grid" class="w-6 h-6 text-white"></i>
       </div>
-        <div class="font-medium tracking-wide text-xl">{{ $category->name }}</div>
-        <div class="text-xs sm:text-base line-clamp-1 font-light text-gray-500 ">{{ count($category->products) }} Produk</div>
+        <div class="font-medium tracking-wide text-base md:text-xl">{{ $category->name }}</div>
+        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">{{ count($category->products) }} Produk</div>
     </a>
     @endforeach
   </div>

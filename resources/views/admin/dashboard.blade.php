@@ -1,31 +1,18 @@
 @extends('layouts.app_admin')
 
 @section('content')
-<!-- <div class="px-4 my-5 flex space-x-5">
-  <div class="grow">
-    <div class="grid grid-cols-4">
-      <div class="flex items-center border">Produk</div>
-      <div class="flex items-center border">Produk Display</div>
-      <div class="flex items-center border">Produk</div>
-      <div class="flex items-center border">Produk</div>
-    </div>
-  </div>
-  <div class="w-64 bg-gray-300">
-
-  </div>
-</div> -->
 <div class="px-4 my-5">
   <div>
     <h2 class="text-2xl font-bold leading-7 text-gray-900 sm:truncate sm:text-3xl">Dashboard</h2>
   </div>
-  <div class="mt-7 mb-10 grid grid-cols-4 gap-6">
+  <div class="mt-7 mb-10 grid grid-cols-3 md:grid-cols-4 gap-4 lg:gap-6">
     <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
       <div>
         <div class="text-sm text-gray-600">Kategori Barang</div>
         <div class="text-3xl font-medium">{{ count($categories) }}</div>
       </div>
-      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
-        <i data-feather="list" class="w-6 h-6 text-blue-800"></i>
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-2.5 lg:p-3">
+        <i data-feather="list" class="w-5 h-5 lg:w-6 lg:h-6 text-blue-800"></i>
       </div>
     </div>
     <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
@@ -33,7 +20,7 @@
         <div class="text-sm text-gray-600">Penjual</div>
         <div class="text-3xl font-medium">{{ count($sellers) }}</div>
       </div>
-      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-2.5 lg:p-3">
         <i data-feather="users" class="w-6 h-6 text-blue-800"></i>
       </div>
     </div>
@@ -42,11 +29,11 @@
         <div class="text-sm text-gray-600">Produk Barang</div>
         <div class="text-3xl font-medium">{{ count($products) }}</div>
       </div>
-      <div class="h-fit self-start rounded-lg bg-blue-100 p-3">
+      <div class="h-fit self-start rounded-lg bg-blue-100 p-2.5 lg:p-3">
         <i data-feather="shopping-bag" class="w-6 h-6 text-blue-800"></i>
       </div>
     </div>
-    <div class="flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
+    <div class="hidden md:flex justify-between items-end p-4 border border-gray-200 rounded-lg h-32 w-full">
       <div>
         <div class="text-sm text-gray-600">Produk Ditampilkan</div>
         <div class="text-3xl font-medium">{{ count($display_products) }}</div>

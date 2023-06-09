@@ -3,7 +3,7 @@
 @section('content')
 <div class="px-4 my-5">
   <div class="flex justify-between items-end">
-    <div>
+    <div class="ml-1 sm:ml-0">
       <nav class="flex mb-1" aria-label="Breadcrumb">
         <ol class="inline-flex items-center space-x-1 md:space-x-2">
           <li class="inline-flex items-center">
@@ -24,12 +24,12 @@
     <div>      
       <button data-modal-target="seller-modal" data-modal-toggle="seller-modal" type="button"
       class="btn-add block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-        Tambah Penjual
+        Tambah<span class="hidden sm:inline"> Penjual</span>
       </button> 
     </div>
   </div>
 
-  <div class="my-10 overflow-x-auto sm:rounded-lg">
+  <div class="my-7 sm:my-10 overflow-x-auto sm:rounded-lg">
     <table class="w-full text-sm text-left text-gray-500">
       <thead class="text-xs text-gray-700 uppercase bg-gray-50">
         <tr>
