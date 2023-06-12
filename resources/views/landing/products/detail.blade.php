@@ -63,16 +63,16 @@
             <img class="border border-gray-200 rounded-lg aspect-square object-cover w-12 h-12 p-1.5" src="{{ asset('images/seller.png') }}" alt="image description">
           @endempty
           <div class="ml-2">
-            <h5 class="text-xl font-bold text-gray-900 line-clamp-1">{{ $product->seller->name }}</h5>
-            <div class="flex items-center font-light text-sm text-gray-700">
+            <h5 class="text-base md:text-xl font-bold text-gray-900 line-clamp-1">{{ $product->seller->name }}</h5>
+            <div class="flex items-center font-light text-xs md:text-sm text-gray-700">
               <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
               <span class="line-clamp-1">@isset($product->seller->village){{$product->seller->village->name}}@endisset, @isset($product->seller->district){{ $product->seller->district->name }}@endisset</span>
             </div>
           </div>
         </div>
-        <div class="md:hidden">
+        <div class="self-start md:hidden">
           <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
-            <i data-feather="more-vertical" class="w-5 h-5"></i>
+            <i data-feather="more-vertical" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </button>
           <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
             <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconButton">

@@ -31,28 +31,43 @@
 
   <div class="my-5 p-4 sm:p-6 flex justify-between border border-gray-200 rounded-lg">
     <div class="flex">
-      <div class="flex">
+      <div class="inline-block">
         @isset($seller->photo)
-        <img class="rounded-lg aspect-square object-cover w-16 h-16" src="{{ $seller->photo }}" alt="image description">
+        <img class="rounded-lg aspect-square object-cover w-12 md:w-16 h-12 md:h-16" src="{{ $seller->photo }}" alt="image description">
         @endisset
         @empty($seller->photo)
-        <img class="border border-gray-200 rounded-lg aspect-square object-cover w-16 h-16 p-2" src="{{ asset('images/seller.png') }}" alt="image description">
+        <img class="border border-gray-200 rounded-lg aspect-square object-cover w-12 md:w-16 h-12 md:h-16 p-2" src="{{ asset('images/seller.png') }}" alt="image description">
         @endempty
       </div>
-      <div class="ml-3.5">
-        <h5 class="text-xl tracking-wide font-bold text-gray-900 line-clamp-1">{{ $seller->name }}</h5>      
+      <div class="ml-2.5 sm:ml-3.5">
+        <h5 class="text-base sm:text-xl tracking-wide font-bold text-gray-900 line-clamp-1">{{ $seller->name }}</h5>      
           <div>
-            <div class="text-sm text-gray-500">
+            <div class="text-xs sm:text-sm text-gray-500">
               {{ $seller->address }}
             </div>
-            <div class="flex items-center text-sm text-gray-500">
+            <div class="flex items-center text-xs sm:text-sm text-gray-500">
               <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
               <span class="line-clamp-1">{{$seller->village->name}}, {{$seller->district->name}}</span>
             </div>
           </div>
       </div>
     </div>
-    <div class="flex space-x-3">
+    <div class="md:hidden">
+      <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center py-1 sm:p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+        <i data-feather="more-vertical" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </button>
+      <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+        <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownMenuIconButton">
+          <li>
+            <button data-modal-target="contact-modal" data-modal-toggle="contact-modal" class="block w-full px-4 py-2 text-start hover:bg-gray-100">Hubungi Penjual</button>
+          </li>
+          <li>
+          <button data-modal-target="seller-edit-modal" data-modal-toggle="seller-edit-modal" class="block w-full px-4 py-2 text-start hover:bg-gray-100">Edit</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="hidden md:flex space-x-3">
       <button type="button" data-modal-target="contact-modal" data-modal-toggle="contact-modal"
       class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 h-fit">
         Hubungi Penjual
@@ -65,8 +80,8 @@
     </div>
   </div>
 
-  <div class="flex justify-between items-center mt-8 mb-5">
-    <div>      
+  <div class="flex justify-end sm:justify-between items-center mt-8 mb-5">
+    <div class="hidden sm:inline-block">   
       <form>
           <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Cari</label>
           <div class="relative">
@@ -81,7 +96,7 @@
     </div>
     <div>
       <a href="{{ route('admin.sellers.products.create', ['seller' => $seller->id]) }}"
-      class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+      class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs sm:text-sm px-5 py-2.5 text-center">
         Tambah Produk
       </a>
     </div>

@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function __invoke(Request $request)
     {
         return view('landing.home', [
-            'products' => Product::orderBy('created_at', 'desc')->where('is_archived', false)->limit(4)->get(),
+            'products' => Product::orderBy('created_at', 'desc')->where('is_archived', false)->limit(8)->get(),
             'categories' => Category::with(['products' => function (Builder $query) {
                 $query->where('is_archived', false);
             }])->limit(3)->get(),

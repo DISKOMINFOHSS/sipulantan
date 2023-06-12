@@ -13,11 +13,11 @@
       </div>
       <div class="px-6 mt-3 space-y-6">
         <div class="grid grid-cols-6 gap-6">
-          <div class="col-span-3">
+          <div class="col-span-6 md:col-span-3">
             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama Toko <span class="text-red-600">*</span></label>
             <input type="text" name="name" id="name" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Warung Mama" required="" value="{{ $seller->name }}">
           </div>
-          <div class="col-span-3">
+          <div class="col-span-6 md:col-span-3">
             <label class="block mb-2 text-sm font-medium text-gray-900" for="photo">Upload Gambar</label>
             <div class="flex space-x-2.5">
               @isset($seller->photo)
@@ -30,7 +30,7 @@
             <label for="address" class="block mb-2 text-sm font-medium text-gray-900">Alamat</label>
             <input type="text" name="address" id="address" class=" border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Jalan Panglima Batur" value="{{ $seller->address }}">
           </div>
-          <div class="col-span-3">
+          <div class="col-span-6 md:col-span-3">
             <select id="districts" name="district" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
               <option value="">Pilih Kecamatan</option>
               @foreach($districts as $district)
@@ -38,14 +38,14 @@
               @endforeach
             </select>
           </div>
-          <div class="col-span-3">
+          <div class="col-span-6 md:col-span-3">
             <select id="villages" name="village" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
               @foreach($seller->district->villages as $village)
               <option value="{{ $village->id }}" @if($village->id == $seller->village->id) selected @endif>{{ $village->name }}</option>
               @endforeach
             </select>
           </div>
-          <div class="col-span-2">
+          <div class="col-span-6 md:col-span-2">
             <label for="contact-type" class="block mb-2 text-sm font-medium text-gray-900">Informasi Kontak <span class="text-red-600">*</span></label>
             <select id="contact-type" name="type" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
               <option selected value="whatsapp">WhatsApp</option>
@@ -53,8 +53,8 @@
               <option value="phone number">No. Handphone</option> -->
             </select>
           </div>
-          <div class="col-span-4">
-            <label class="block mb-2 text-sm font-medium text-white">Kontak</label>
+          <div class="col-span-6 md:col-span-4">
+            <label class="hidden md:block mb-2 text-sm font-medium text-white">Kontak</label>
             <input type="text" name="contact" id="contact" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" placeholder="Misal. 08123456789" required="" value="{{ str_replace('https://wa.me/62', '0', $seller->contacts[0]->contact_info) }}">
           </div>
         </div>
