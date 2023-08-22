@@ -1,7 +1,8 @@
 <aside id="drawer-sidebar" class="fixed top-0 left-0 z-40 transition-transform -translate-x-full lg:translate-x-0 lg:relative min-h-screen min-w-fit w-64 bg-gray-50 px-4">
   <a href="{{ route('landing') }}" class="flex items-center my-4 py-4 px-2">
-    <i class="mr-2" data-feather="octagon"></i>
-    <span class="self-center text-2xl font-semibold whitespace-nowrap">LOGO</span>
+    <!-- <i class="mr-2" data-feather="octagon"></i> -->
+    <span class="self-center text-2xl tracking-widest font-semibold whitespace-nowrap">SIPULANTAN</span>
+    <!-- <img src="{{ asset('/images/sipulantan.png') }}" alt="" class="w-48"> -->
   </a>
   <div class="mb-5">
     <div class="block text-gray-500 font-light text-sm tracking-wide mb-1 px-2">

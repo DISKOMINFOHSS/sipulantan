@@ -66,7 +66,7 @@
             <h5 class="text-base md:text-xl font-bold text-gray-900 line-clamp-1">{{ $product->seller->name }}</h5>
             <div class="flex items-center font-light text-xs md:text-sm text-gray-700">
               <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
-              <span class="line-clamp-1">@isset($product->seller->village){{$product->seller->village->name}}@endisset, @isset($product->seller->district){{ $product->seller->district->name }}@endisset</span>
+              <span class="line-clamp-1">@isset($product->seller->village_code){{$product->seller->village_code->name}}@endisset, @isset($product->seller->district_code){{ $product->seller->district_code->name }}@endisset</span>
             </div>
           </div>
         </div>

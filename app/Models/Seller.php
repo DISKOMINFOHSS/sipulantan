@@ -21,12 +21,12 @@ class Seller extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'address', 'photo', 'village_id', 'district_id'];
+    protected $fillable = ['name', 'address', 'photo', 'village_code', 'district_code'];
 
-    public function village(): BelongsTo
-    {
-        return $this->belongsTo(Village::class);
-    }
+    // public function village(): BelongsTo
+    // {
+    //     return $this->belongsTo(Village::class);
+    // }
 
     public function district(): BelongsTo
     {
@@ -44,13 +44,33 @@ class Seller extends Model
     }
 
     /**
-     * Interact with the category's photo.
+     * Interact with the seller's photo.
      */
     protected function photo(): Attribute
     {
         return Attribute::make(
             get: fn ($file) => $file ? Storage::url($file): null,
             set: fn ($file) => $file->storeAs('public/images/sellers', $file->hashName()),
+        );
+    }
+
+    /**
+     * Interact with the seller's village.
+     */
+    protected function villageCode(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($code) => Village::firstWhere('code', $code),
+        );
+    }
+
+    /**
+     * Interact with the seller's district.
+     */
+    protected function districtCode(): Attribute
+    {
+        return Attribute::make(
+            get: fn ($code) => District::firstWhere('code', $code),
         );
     }
 }

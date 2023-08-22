@@ -28,7 +28,7 @@
             <select id="districts" name="district" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
               <option value="" selected>Pilih Kecamatan</option>
               @foreach($districts as $district)
-              <option value="{{ $district->id }}">{{ $district->name }}</option>
+              <option value="{{ $district->code }}">{{ $district->name }}</option>
               @endforeach
             </select>
           </div>
@@ -76,7 +76,7 @@
       villages.forEach((village) => {
         const option = document.createElement('option');
 
-        option.setAttribute('value', village['id']);
+        option.setAttribute('value', village['code']);
         option.innerText = village['name'];
 
         villageSelect.appendChild(option);

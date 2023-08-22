@@ -1,5 +1,7 @@
 @stack('before-style')
 
+<link rel="icon" href="{{ asset('/images/logo-hss.png')}}">
+
 <!-- Google Font | Inter -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

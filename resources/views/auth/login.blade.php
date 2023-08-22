@@ -4,7 +4,8 @@
 <div class="min-h-full mt-8 sm:mt-16">
   <div class="sm:border mx-auto sm:rounded-lg p-8 sm:max-w-sm">
     <div class="sm:mx-auto sm:w-full sm:max-w-sm">
-      <i class="mx-auto w-12 h-12" data-feather="octagon"></i>
+      <!-- <i class="mx-auto w-12 h-12" data-feather="octagon"></i> -->
+      <img src="{{ asset('images/logo-hss.png') }}" alt="" class="w-24 mx-auto">
       <h2 class="mt-5 text-center text-2xl font-bold leading-9 text-gray-900">Masuk ke Akun</h2>
     </div>
     <div class="my-5 sm:mx-auto sm:w-full sm:max-w-sm">

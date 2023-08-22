@@ -47,7 +47,7 @@
             </div>
             <div class="flex items-center text-xs sm:text-sm text-gray-500">
               <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
-              <span class="line-clamp-1">{{$seller->village->name}}, {{$seller->district->name}}</span>
+              <span class="line-clamp-1">{{$seller->village_code->name}}, {{$seller->district_code->name}}</span>
             </div>
           </div>
       </div>
@@ -80,8 +80,8 @@
     </div>
   </div>
 
-  <div class="flex justify-end sm:justify-between items-center mt-8 mb-5">
-    <div class="hidden sm:inline-block">   
+  <div class="flex justify-end items-center mt-8 mb-5">
+    <!-- <div class="hidden sm:inline-block">   
       <form>
           <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only">Cari</label>
           <div class="relative">
@@ -93,7 +93,7 @@
           </div>
       </form>
 
-    </div>
+    </div> -->
     <div>
       <a href="{{ route('admin.sellers.products.create', ['seller' => $seller->id]) }}"
       class="block text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-xs sm:text-sm px-5 py-2.5 text-center">

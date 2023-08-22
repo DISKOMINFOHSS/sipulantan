@@ -9,6 +9,7 @@ use App\Models\Seller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Laravolt\Indonesia\Models\District;
 
 class ProductController extends Controller
 {
@@ -22,6 +23,7 @@ class ProductController extends Controller
     public function create(): View
     {
         return view('admin.products.create', [
+            'categories' => Category::orderBy('name')->get(),
             'sellers' => Seller::orderBy('name')->get()
         ]);
     }
@@ -35,22 +37,29 @@ class ProductController extends Controller
             'photo'     => 'required|file|image|max:1024',
         ]);
 
-        $product = new Product;
-        $product->name = $validated['name'];
-        $product->seller_id = $validated['seller'];
-        $product->price = $validated['price'];
-        $product->photo = $validated['photo'];
+        // $product = new Product;
+        // $product->name = $validated['name'];
+        // $product->seller_id = $validated['seller'];
+        // $product->price = $validated['price'];
+        // $product->photo = $validated['photo'];
 
-        $product->discount = $request->input('discount');
-        $product->description = $request->input('description');
-        $product->specification = $request->input('specification');
+        // $product->discount = $request->input('discount');
+        // $product->description = $request->input('description');
+        // $product->specification = $request->input('specification');
 
-        if ($request->input('archive')) $product->is_archived = true;
+        // if ($request->input('archive')) $product->is_archived = true;
 
-        $product->save();
+        // $product->save();
 
-        if ($request->input('category')) {
-            $product->categories()->attach($request->input('category'));
+        // if ($request->input('category')) {
+        //     $product->categories()->attach($request->input('category'));
+        // }
+
+        if ($request->session()->exists('seller_id')) {
+            return view('admin.sellers.detail', [
+                'districts' => District::with('villages')->where('city_code', '6306')->get(),
+                'seller'    => Seller::with(['contacts', 'products'])->findOrFail($validated['seller']),
+            ]);
         }
 
         return redirect()->route('admin.products.index');
@@ -59,6 +68,7 @@ class ProductController extends Controller
     public function edit(string $id): View
     {
         return view('admin.products.edit', [
+            'categories' => Category::orderBy('name')->get(),
             'product' => Product::find($id),
             'sellers' => Seller::orderBy('name')->get()
         ]);

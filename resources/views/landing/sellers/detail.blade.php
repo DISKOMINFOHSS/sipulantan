@@ -15,7 +15,7 @@
         <h5 class="text-xl tracking-wide font-bold text-gray-900 line-clamp-1">{{ $seller->name }}</h5>
         <div class="flex items-center font-light text-sm text-gray-700">
           <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
-          <span class="line-clamp-1">{{$seller->village->name}}, {{$seller->district->name}}</span>
+          <span class="line-clamp-1">{{$seller->village_code->name}}, {{$seller->district_code->name}}</span>
         </div>
       </div>
     </div>
@@ -78,7 +78,7 @@
                   </p>
                   <div class="flex items-center text-sm text-gray-500">
                     <i data-feather="map-pin" class="w-3 h-3 mr-1"></i>
-                    <span class="line-clamp-1">{{ $seller->village->name }}, {{ $seller->district->name }}</span>
+                    <span class="line-clamp-1">{{ $seller->village_code->name }}, {{ $seller->district_code->name }}</span>
                   </div>
                 </div>
             </div>

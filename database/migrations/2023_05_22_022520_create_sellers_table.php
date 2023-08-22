@@ -16,12 +16,22 @@ return new class extends Migration
             $table->string('name');
             $table->text('address')->nullable();
             $table->string('photo')->nullable();
-            $table->foreignId('village_id')->nullable();
-            $table->foreignId('district_id')->nullable();
+            $table->char('village_code', 10)->nullable();
+            $table->char('district_code', 7)->nullable();
             $table->timestamps();
 
-            $table->foreign('village_id')->references('id')->on('indonesia_villages');
-            $table->foreign('district_id')->references('id')->on('indonesia_districts');
+            // $table->foreign('village_code')->references('code')->on('indonesia_villages');
+            // $table->foreign('district_code')->references('code')->on('indonesia_districts');
+
+            $table->foreign('district_code')
+                ->references('code')
+                ->on(config('laravolt.indonesia.table_prefix').'districts')
+                ->onUpdate('cascade')->onDelete('restrict');
+            
+            $table->foreign('village_code')
+                ->references('code')
+                ->on(config('laravolt.indonesia.table_prefix').'villages')
+                ->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

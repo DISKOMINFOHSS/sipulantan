@@ -19,7 +19,7 @@ class SellerController extends Controller
     {
         return view('admin.sellers.list', [
             'districts' => District::with('villages')->where('city_code', '6306')->get(),
-            'sellers' => Seller::with(['contacts', 'village', 'district'])->paginate(12),
+            'sellers' => Seller::with(['contacts'])->paginate(20),
         ]);
     }
 
@@ -38,8 +38,8 @@ class SellerController extends Controller
         $seller = new Seller;
         $seller->name = $validated['name'];
         $seller->address = $request->input('address');
-        $seller->village_id = $request->input('village') ? $request->input('village') : null;
-        $seller->district_id = $request->input('district') ? $request->input('district') : null;
+        $seller->village_code = $request->input('village') ? $request->input('village') : null;
+        $seller->district_code = $request->input('district') ? $request->input('district') : null;
 
         if ($request->hasFile('photo')) {
             $seller->photo = $validated['photo'];
@@ -65,7 +65,7 @@ class SellerController extends Controller
     {
         return view('admin.sellers.detail', [
             'districts' => District::with('villages')->where('city_code', '6306')->get(),
-            'seller'    => Seller::with(['contacts', 'products', 'district.villages'])->findOrFail($id),
+            'seller'    => Seller::with(['contacts', 'products'])->findOrFail($id),
         ]);
         // return response()->json(Seller::with('contacts', 'village', 'district')->find($id));
     }
@@ -81,8 +81,8 @@ class SellerController extends Controller
 
         $seller = Seller::with('contacts')->findorFail($id);
         $seller->name = $validated['name'];
-        $seller->village_id = $request->input('village');
-        $seller->district_id = $request->input('district');
+        $seller->village_code = $request->input('village');
+        $seller->district_code = $request->input('district');
 
         if ($request->hasFile('photo')) {
             $seller->photo = $validated['photo'];

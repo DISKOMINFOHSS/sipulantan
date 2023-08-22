@@ -44,7 +44,7 @@ class Product extends Model
     {
         return Attribute::make(
             get: fn ($file) => $file ? Storage::url($file) : null,
-            set: fn ($file) => $file->storeAs('public/images/sellers', $file->hashName()),
+            set: fn ($file) => $file->storeAs('public/images/products', $file->hashName()),
         );
     }
 

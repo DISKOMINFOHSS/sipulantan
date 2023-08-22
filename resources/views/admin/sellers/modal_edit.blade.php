@@ -34,14 +34,14 @@
             <select id="districts" name="district" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
               <option value="">Pilih Kecamatan</option>
               @foreach($districts as $district)
-              <option value="{{ $district->id }}" @if($district->id == $seller->district->id) selected @endif>{{ $district->name }}</option>
+              <option value="{{ $district->code }}" @if($district->id == $seller->district_code->id) selected @endif>{{ $district->name }}</option>
               @endforeach
             </select>
           </div>
           <div class="col-span-6 md:col-span-3">
             <select id="villages" name="village" class="border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" required>
-              @foreach($seller->district->villages as $village)
-              <option value="{{ $village->id }}" @if($village->id == $seller->village->id) selected @endif>{{ $village->name }}</option>
+              @foreach($seller->district_code->villages as $village)
+              <option value="{{ $village->code }}" @if($village->id == $seller->village_code->id) selected @endif>{{ $village->name }}</option>
               @endforeach
             </select>
           </div>
@@ -84,7 +84,7 @@
       villages.forEach((village) => {
         const option = document.createElement('option');
 
-        option.setAttribute('value', village['id']);
+        option.setAttribute('value', village['code']);
         option.innerText = village['name'];
 
         villageSelect.appendChild(option);

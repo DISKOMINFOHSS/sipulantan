@@ -14,6 +14,7 @@ class ProductController extends Controller
     {
         return view('landing.products.list', [
             'title'     => 'Semua Produk',
+            'categories' => Category::orderBy('name')->get(),
             'products'   => Product::with('seller')->where('is_archived', false)
                                 ->orderBy('created_at', 'desc')->paginate(16),
         ]);
@@ -35,12 +36,14 @@ class ProductController extends Controller
             'query'     => $keyword,
             'title'     => 'Hasil Pencarian',
             'products'  => $q->select('products.*')->paginate(16),
+            'categories' => Category::orderBy('name')->get(),
         ]);
     }
 
     public function show(string $id): View
     {
         return view('landing.products.detail', [
+            'categories' => Category::orderBy('name')->get(),
             'product' => Product::with(['seller', 'categories'])
                             ->orderBy('created_at', 'desc')->find($id),
         ]);

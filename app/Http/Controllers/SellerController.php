@@ -12,6 +12,7 @@ class SellerController extends Controller
     public function __invoke(string $id)
     {
         return view('landing.sellers.detail', [
+            'categories' => Category::orderBy('name')->get(),
             'seller' => Seller::withWhereHas('products', function (Builder $query) {
                 $query->where('is_archived', false);
             })->find($id),

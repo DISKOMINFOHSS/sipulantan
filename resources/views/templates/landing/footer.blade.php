@@ -3,8 +3,9 @@
         <div class="sm:flex sm:items-center sm:justify-between">
             <div class="my-4">
               <a href="{{ route('landing') }}" class="flex items-center mb-1">
-                <i class="mr-2" data-feather="octagon"></i>
-                <span class="self-center text-2xl font-semibold whitespace-nowrap">LOGO</span>
+                <!-- <i class="mr-2" data-feather="octagon"></i>
+                <span class="self-center text-2xl font-semibold whitespace-nowrap">LOGO</span> -->
+                <img src="{{ asset('/images/logo-sipulantan.png') }}" alt="" class="w-60">
               </a>
               <span class="block sm:inline-block text-sm text-gray-500">Copyright © 2023 <a href="#" class="hover:underline">Diskominfo HSS</a>.</span>
               <span class="block sm:inline-block text-sm text-gray-500">All Rights Reserved.</span>

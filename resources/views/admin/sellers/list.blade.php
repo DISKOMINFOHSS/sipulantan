@@ -57,8 +57,8 @@
           </th>
           <td class="px-6 py-4">
             <div>
-              <div class="text-gray-700">@isset($seller->village) {{ $seller->village->name }} @endisset</div>
-              <div class="font-light text-gray-700">@isset($seller->district) {{ $seller->district->name }} @endisset</div>
+              <div class="text-gray-700">@isset($seller->village_code) {{ $seller->village_code->name }} @endisset</div>
+              <div class="font-light text-gray-700">@isset($seller->district_code) {{ $seller->district_code->name }} @endisset</div>
             </div>
           </td>
           <td class="px-6 py-4">
