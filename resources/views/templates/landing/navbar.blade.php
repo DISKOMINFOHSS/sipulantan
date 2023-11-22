@@ -7,7 +7,7 @@
         <img src="{{ asset('/images/logo-sipulantan.png') }}" alt="" class="w-56">
       </a>
       <div class="flex">
-        <div id="mega-menu" class="items-center justify-between hidden w-full md:flex md:w-auto mr-4">
+        {{-- <div id="mega-menu" class="items-center justify-between hidden w-full md:flex md:w-auto mr-4">
           <ul class="flex flex-col mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
             <li>
               <button id="mega-menu-dropdown-button" data-dropdown-toggle="mega-menu-dropdown" class="flex items-center justify-between w-full py-2 font-medium text-gray-900 border-b border-gray-100 md:w-auto hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-blue-600 md:p-0">
@@ -29,7 +29,7 @@
               </div>
             </li>
           </ul>
-        </div>
+        </div> --}}
         <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm px-1 py-2.5 mr-1" >
           <i class="w-6 h-6 text-gray-500" data-feather="search"></i>
           <span class="sr-only">Search</span>
@@ -51,7 +51,7 @@
           Dashboard
         </a>
         @endauth
-        
+
         @guest
         <a href="{{ route('auth.get.login') }}" class="hidden md:inline-block text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
           Masuk

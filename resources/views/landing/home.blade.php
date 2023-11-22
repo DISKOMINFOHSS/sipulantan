@@ -3,7 +3,6 @@
 @section('content')
 <div class="max-w-screen-xl mx-auto my-4 xl:my-8 px-4">
 
-
 <div id="default-carousel" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
     <div class="relative overflow-hidden rounded-lg w-full aspect-video object-cover">
@@ -39,24 +38,25 @@
         </span>
     </button>
 </div>
-
-
-  <!-- <a href="{{ route('products.index') }}">
-    <img src="{{ asset('/images/home-banner.png')}}" class="block w-full aspect-video object-cover rounded-lg" alt="...">
-  </a> -->
-
   <div class="text-center mt-4">
     <h2 class="text-2xl md:text-3xl font-bold mb-1 tracking-wide">Kategori</h2>
   </div>
 
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 my-5">
-    @foreach($categories->slice(0, 3) as $category)
+    <a href="{{ route('products.index') }}" class="flex flex-col justify-center items-center p-4 md:h-40 w-full bg-blue-50 rounded-lg hover:bg-blue-200">
+        <div class="bg-blue-600 rounded-full p-3 mb-2">
+          <i data-feather="grid" class="w-6 h-6 text-white"></i>
+        </div>
+        <div class="font-medium tracking-wide text-base md:text-xl">Semua Kategori</div>
+        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">x Produk</div>
+    </a>
+    @foreach($categories as $category)
     <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="flex flex-col justify-center items-center p-4 md:h-40 w-full bg-blue-50 rounded-lg hover:bg-blue-200">
       <div class="bg-blue-600 rounded-full p-3 mb-2">
         <i data-feather="grid" class="w-6 h-6 text-white"></i>
       </div>
         <div class="font-medium tracking-wide text-base md:text-xl">{{ $category->name }}</div>
-        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">{{ count($category->products) }} Produk</div>
+        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">{{ $category->products_count }} Produk</div>
     </a>
     @endforeach
   </div>
@@ -78,7 +78,7 @@
       @include('templates.landing.card_product', ['product' => $p])
     @endforeach
     <!-- <div class="w-full h-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-      
+
     </div> -->
   </div>
 
