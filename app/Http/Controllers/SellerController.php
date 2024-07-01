@@ -14,7 +14,7 @@ class SellerController extends Controller
         return view('landing.sellers.detail', [
             'categories' => Category::orderBy('name')->get(),
             'seller' => Seller::withWhereHas('products', function (Builder $query) {
-                $query->where('is_archived', false);
+                $query->where('is_archived', false)->orderBy('created_at', 'desc');
             })->find($id),
         ]);
     }

@@ -10,7 +10,7 @@
       <h5 class="text-xl md:text-2xl font-semibold tracking-tight text-gray-900">{{ $product->name }}</h5>
       <div class="flex items-center mt-2 space-x-2">
         @foreach($product->categories as $category)
-        <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded border border-blue-400">{{ $category->name }}</span>
+        <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded border border-blue-400 hover:underline">{{ $category->name }}</a>
         @endforeach
       </div>
       <div class="flex items-center justify-between mt-2 mb-3">
@@ -71,7 +71,7 @@
           </div>
         </div>
         <div class="self-start md:hidden">
-          <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button"> 
+          <button id="dropdownMenuIconButton" data-dropdown-toggle="dropdownDots" class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-900 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50" type="button">
             <i data-feather="more-vertical" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           </button>
           <div id="dropdownDots" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44">

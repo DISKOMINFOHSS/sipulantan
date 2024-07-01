@@ -17,10 +17,12 @@ class DashboardController extends Controller
     public function __invoke(Request $request): View
     {
         return view('admin.dashboard', [
-            'categories' => Category::orderBy('name')->get(),
-            'products' => Product::with('seller')->orderBy('created_at', 'desc')->get(),
-            'sellers' => Seller::with('products')->get(),
-            'display_products' => Product::where('is_archived', false)->get(),
+            'total_categories'  => Category::all()->count(),
+            'total_sellers'     => Seller::all()->count(),
+            'total_products'    => Product::all()->count(),
+            'total_active_products' => Product::where('is_archived', false)->count(),
+            'products'  => Product::with('seller')->orderBy('created_at', 'desc')->limit(8)->get(),
+            'sellers'   => Seller::withCount('products')->limit(5)->get(),
         ]);
     }
 }

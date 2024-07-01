@@ -16,10 +16,10 @@ class CategoryController extends Controller
     {
         return view('landing.categories.detail', [
             'categories' => Category::orderBy('name')->get(),
-            'c' => Category::findOrFail($id),
+            'category' => Category::findOrFail($id),
             'products' => Product::withWhereHas('categories', function (Builder $query) use ($id) {
                 $query->where('categories.id', $id);
-            })->where('is_archived', false)->paginate(16),
+            })->where('is_archived', false)->orderBy('created_at', 'desc')->paginate(20),
         ]);
     }
 }

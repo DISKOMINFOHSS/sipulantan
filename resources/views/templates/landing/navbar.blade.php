@@ -2,8 +2,6 @@
   <nav class="bg-white border-b border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
       <a href="{{ route('landing') }}" class="flex items-center pl-1">
-        <!-- <i class="mr-2" data-feather="octagon"></i> -->
-        <!-- <span class="self-center text-2xl font-semibold whitespace-nowrap">SIPULANTAN</span> -->
         <img src="{{ asset('/images/logo-sipulantan.png') }}" alt="" class="w-56">
       </a>
       <div class="flex">
@@ -30,7 +28,7 @@
             </li>
           </ul>
         </div> --}}
-        <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm px-1 py-2.5 mr-1" >
+        <button type="button" data-collapse-toggle="navbar-search" aria-controls="navbar-search" aria-expanded="false" class="md:hidden text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-4 focus:ring-gray-200 rounded-lg text-sm border border-gray-200 p-2.5 mr-1" >
           <i class="w-6 h-6 text-gray-500" data-feather="search"></i>
           <span class="sr-only">Search</span>
         </button>
@@ -57,7 +55,7 @@
           Masuk
         </a>
         @endguest
-        <!-- <button type="button" class="hidden md:inline-block text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Masuk</button> -->
+
         <form class="md:hidden mt-3.5"  method="get" action="{{ route('products.search') }}">
             <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
             <div class="relative">

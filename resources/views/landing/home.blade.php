@@ -48,7 +48,7 @@
           <i data-feather="grid" class="w-6 h-6 text-white"></i>
         </div>
         <div class="font-medium tracking-wide text-base md:text-xl">Semua Kategori</div>
-        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">x Produk</div>
+        <div class="text-xs md:text-base line-clamp-1 font-light text-gray-500 ">{{ $total_products }} Produk</div>
     </a>
     @foreach($categories as $category)
     <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="flex flex-col justify-center items-center p-4 md:h-40 w-full bg-blue-50 rounded-lg hover:bg-blue-200">
@@ -69,17 +69,11 @@
     </a>
   </div>
 
-  <!-- <div class="text-center mt-8">
-    <h2 class="text-2xl md:text-3xl font-bold mb-1 tracking-wide">Produk Terbaru</h2>
-  </div> -->
 
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:gap-8 my-8">
     @foreach($products as $p)
       @include('templates.landing.card_product', ['product' => $p])
     @endforeach
-    <!-- <div class="w-full h-full max-w-sm bg-white border border-gray-200 rounded-lg shadow">
-
-    </div> -->
   </div>
 
 </div>

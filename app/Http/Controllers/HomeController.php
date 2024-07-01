@@ -16,16 +16,11 @@ class HomeController extends Controller
     {
         return view('landing.home', [
             'products' => Product::orderBy('created_at', 'desc')->where('is_archived', false)->limit(16)->get(),
+            'total_products' => Product::all()->count(),
             'categories' => Category::withCount(['products' => function (Builder $query) {
                 $query->where('is_archived', false);
             }])->orderBy('products_count', 'desc')->limit(2)->get(),
         ]);
 
-        // return response()->json([
-        //     'products' => Product::orderBy('created_at', 'desc')->where('is_archived', false)->limit(16)->get(),
-        //     'categories' => Category::withCount(['products' => function (Builder $query) {
-        //         $query->where('is_archived', false);
-        //     }])->orderBy('products_count', 'desc')->limit(2)->get(),
-        // ]);
     }
 }
